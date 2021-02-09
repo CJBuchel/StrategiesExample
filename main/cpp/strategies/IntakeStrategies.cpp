@@ -6,7 +6,11 @@
 /**
  * Intake manual strategy Constructor
  */
-IntakeManualStrategy::IntakeManualStrategy(Intake &intake, Controllers &contGroup) : _intake(intake), _contGroup(contGroup) {}
+IntakeManualStrategy::IntakeManualStrategy(std::string name, Intake &intake, Controllers &contGroup) : Strategy(name), _intake(intake), _contGroup(contGroup) {
+	Requires(&intake);
+	SetCanBeInterrupted(true);
+	SetCanBeReused(true);
+}
 
 /**
  * Intake manual strategy logic (auto called by the strategy controller)
